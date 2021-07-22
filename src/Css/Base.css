@@ -1,0 +1,29 @@
+.base{
+    width: 90%;
+    margin:40px auto;
+}
+.base-inp{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+    margin: 20px 70px;
+}
+@media (max-width:800px) {
+    .base-inp{
+        margin: 20px 0;
+    }
+}
+@media (max-width:650px) {
+    .base-inp{
+        height: 100px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .inp{
+        width: 100%;
+    }
+    .filter{
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,39 @@
+.inp{
+    width: 400px;
+    display: flex;
+    align-items: center;
+    background-color: var(--elClr);
+    padding: 5px 10px;
+    border-radius: 4px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,.2);
+}
+.inp-svg{
+    width: 15px;
+}
+.inp-svg path{
+    fill:var(--txtClr);
+}
+.inp-left{
+    padding: 2px 0 0;
+    margin:0 10px 0 15px;
+}
+.inp-right{
+    border: none;
+    height: 30px;
+    width: 100%;
+    color: var(--txtClr);
+    font-weight: 600;
+    font-size: 14px;
+    background-color: var(--elClr);
+}
+.inp-right::placeholder{
+    color: var(--txtClr); 
+}
+.inp-right:focus{
+    outline: none;
+}
+@media (max-width:450px){
+    .inp{
+        width: 100%;
+    }
+}

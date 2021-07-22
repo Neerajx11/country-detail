@@ -1,0 +1,36 @@
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 8px;
+    background-color:#ee82eec5;
+    animation: rainbow 8s infinite forwards;
+}
+
+@keyframes rainbow{
+    0%{
+        background-color:#ee82eec5;
+    }
+    14%{
+        background-color:#4c0082be;        
+    }
+    28%{
+        background-color:#0000ffb0;
+    }
+    42%{
+        background-color:#008000c0;
+    }
+    57%{
+        background-color:#ffff00be;        
+    }
+    72%{
+        background-color:#ffa600c4;
+    }
+    86%{
+        background-color:#ff0000bd;
+    }
+    100%{
+        background-color:#ee82eec5;
+    }
+}
