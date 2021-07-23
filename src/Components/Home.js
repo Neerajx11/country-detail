@@ -5,10 +5,9 @@ import Loader from "./Loader";
 import Navbar from "./Navbar";
 
 import "../Css/Home.css";
-import Modal from "./Modal";
 
 const Home = () => {
-  let { loading, theme, toggleTheme, showModal } = useCountry();
+  let { loading, theme, toggleTheme } = useCountry();
 
   const setThemeFromLocal = () => {
     if (localStorage.getItem("theme") === "dark") toggleTheme();
@@ -22,7 +21,7 @@ const Home = () => {
     <div className="home" data-theme={theme}>
       {loading && <Loader />}
       <Navbar />
-      {showModal ? <Modal /> : <Base />}
+      <Base />
     </div>
   );
 };

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useCountry } from "../Contexts/CountryContext";
 import "../Css/Input.css";
 
 const Input = () => {
-  const [inp, setInp] = useState("");
-  const { filterDataByInp } = useCountry();
+  const { inp, setInp, filterDataByInp } = useCountry();
 
   useEffect(() => {
     filterDataByInp(inp);

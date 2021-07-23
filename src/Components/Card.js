@@ -1,12 +1,19 @@
 import React from "react";
+import { useCountry } from "../Contexts/CountryContext";
 
 import "../Css/Card.css";
 
 const Card = (props) => {
   let { name, capital, region, population, flag } = props.data;
+  let { setModalData, setShowModal } = useCountry();
+
+  const clickHandler = () => {
+    setModalData(props.data);
+    setShowModal(true);
+  };
 
   return (
-    <div className="card">
+    <div className="card" onClick={clickHandler}>
       <div className="card-img">
         <img src={flag} alt="" />
       </div>

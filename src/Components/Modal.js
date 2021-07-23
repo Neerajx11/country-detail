@@ -1,13 +1,41 @@
 import React from "react";
 
+import { useCountry } from "../Contexts/CountryContext";
+
 import "../Css/Modal.css";
 import "../Css/Card.css";
 
 const Modal = () => {
+  let { modalData, setShowModal, defData } = useCountry();
+
+  const backHandler = () => {
+    setShowModal(false);
+  };
+  let {
+    name,
+    nativeName,
+    population,
+    region,
+    subregion,
+    capital,
+    borders,
+    topLevelDomain,
+    currencies,
+    languages,
+    flag,
+  } = modalData;
+
+  let br = defData.filter(({ alpha3Code }) =>
+    borders.some((v) => v.includes(alpha3Code))
+  );
+
+  let finalBdr = br.map(({ name }) => name);
+  console.log(finalBdr);
+
   return (
     <div className="modal">
       <div className="modal-nav">
-        <div className="modal-nav__img">
+        <div className="modal-nav__img" onClick={backHandler}>
           <svg aria-hidden="true" focusable="false" viewBox="0 0 448 512">
             <path
               fill="currentColor"
@@ -17,62 +45,75 @@ const Modal = () => {
           <p>Back</p>
         </div>
       </div>
-      <div className="modal-body">
-        <div className="modal-left">
-          <img src="https://restcountries.eu/data/afg.svg" alt="flag" />
-        </div>
-        <div className="modal-right">
-          <div className="modal-title">Belgium</div>
-          <div className="modal-r__body">
-            <div className="modal-r-body-l">
-              <p className="card-body__list">
-                <span className="card-body__sub">Native Name : </span>
-                Capital
-              </p>
-              <p className="card-body__list">
-                <span className="card-body__sub">Population : </span>
-                Capital
-              </p>
-              <p className="card-body__list">
-                <span className="card-body__sub">Region : </span>
-                Capital
-              </p>
-              <p className="card-body__list">
-                <span className="card-body__sub">Sub Region : </span>
-                Capital
-              </p>
-              <p className="card-body__list">
-                <span className="card-body__sub">Capital : </span>
-                Capital
-              </p>
+      {!modalData ? (
+        <div className="mod-load">Loading...</div>
+      ) : (
+        <>
+          <div className="modal-body">
+            <div className="modal-left">
+              <img src={flag} alt="flag" />
             </div>
-            <div className="modal-r-body-r">
-              <p className="card-body__list">
-                <span className="card-body__sub">Top Level Domain : </span>
-                Capital
-              </p>
-              <p className="card-body__list">
-                <span className="card-body__sub">Currencies : </span>
-                Capital
-              </p>
-              <p className="card-body__list">
-                <span className="card-body__sub">Languages : </span>
-                Capital
-              </p>
+            <div className="modal-right">
+              <div className="modal-title">{name}</div>
+              <div className="modal-r__body">
+                <div className="modal-r-body-l">
+                  <p className="card-body__list">
+                    <span className="card-body__sub">Native Name : </span>
+                    {nativeName}
+                  </p>
+                  <p className="card-body__list">
+                    <span className="card-body__sub">Population : </span>
+                    {population}
+                  </p>
+                  <p className="card-body__list">
+                    <span className="card-body__sub">Region : </span>
+                    {region}
+                  </p>
+                  <p className="card-body__list">
+                    <span className="card-body__sub">Sub Region : </span>
+                    {subregion}
+                  </p>
+                  <p className="card-body__list">
+                    <span className="card-body__sub">Capital : </span>
+                    {capital}
+                  </p>
+                </div>
+                <div className="modal-r-body-r">
+                  <p className="card-body__list">
+                    <span className="card-body__sub">Top Level Domain : </span>
+                    {topLevelDomain[0]}
+                  </p>
+                  <p className="card-body__list">
+                    <span className="card-body__sub">Currencies : </span>
+                    {currencies[0].name}
+                  </p>
+                  <p className="card-body__list">
+                    <span className="card-body__sub">Languages : </span>
+                    {languages[0].name}
+                  </p>
+                </div>
+              </div>
+              <div className="modal-r__body-btm">
+                <div className="mod-crd-ctr">
+                  <span className="card-body__sub">Border Countries : </span>
+                </div>
+                <div className="modal-r__body-bdrlst">
+                  {finalBdr.map((el, idx) => {
+                    return (
+                      <span
+                        className="modal-nav__img card-body__sub-box"
+                        key={idx}
+                      >
+                        {el}
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
-          <div className="modal-r__body-btm">
-            <div>
-              <span className="card-body__sub">Border Countries : </span>
-            </div>
-            <div className="modal-r__body-bdrlst">
-              <span className="modal-nav__img card-body__sub-box">France</span>
-              <span className="modal-nav__img card-body__sub-box">France</span>
-              <span className="modal-nav__img card-body__sub-box">France</span>
-            </div>
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };

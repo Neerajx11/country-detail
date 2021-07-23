@@ -6,7 +6,7 @@ import "../Css/Filter.css";
 const Filter = () => {
   const [drpDown, setDrpDown] = useState(false);
   const [fltrTitle, setFltrTitle] = useState("Filter by Region");
-  const REGIONS = ["All", "Africa", "America", "Asia", "Europe", "Oceania"];
+  const REGIONS = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
 
   const toggleDrpDown = (e) => {
     setDrpDown(!drpDown);

@@ -77,7 +77,11 @@ export function CountryProvider({ children }) {
   }, []);
 
   // ============= SHOW MODAL ===================
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState("");
+
+  // ============= INPUT ================
+  const [inp, setInp] = useState("");
 
   const value = {
     loading,
@@ -93,6 +97,13 @@ export function CountryProvider({ children }) {
     // Modal
     showModal,
     setShowModal,
+    modalData,
+    setModalData,
+    defData,
+
+    // Input
+    inp,
+    setInp,
   };
   return (
     <CountryContext.Provider value={value}>{children}</CountryContext.Provider>
