@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 const CountryContext = React.createContext();
@@ -13,6 +13,7 @@ export function CountryProvider({ children }) {
     setTheme(thm);
     localStorage.setItem("theme", thm);
   };
+
   // ============ LOADING =================
   const [loading, setLoading] = useState(false);
 
@@ -24,11 +25,18 @@ export function CountryProvider({ children }) {
 
   // ============ GETTING DATA ==========
   const BASE_URL = "https://restcountries.eu/rest/v2";
+
+  //Stores default data
+  const [defData, setDefData] = useState(null);
+
+  //Stores filtered Data
   const [countryData, setCountryData] = useState(null);
+
   const getAllData = async () => {
     setLoading(true);
     try {
       const res = await axios.get(`${BASE_URL}/all`);
+      setDefData(res.data);
       setCountryData(res.data);
     } catch (e) {
       console.log(e);
@@ -36,9 +44,40 @@ export function CountryProvider({ children }) {
     setLoading(false);
   };
 
+  const filterDataByInp = (txt) => {
+    txt = txt.toLowerCase();
+
+    if (txt) {
+      let arr = defData.filter(({ name }) => {
+        name = name.toLowerCase();
+        return name.includes(txt);
+      });
+      setCountryData(() => arr);
+    } else {
+      setCountryData(defData);
+    }
+  };
+
+  const filterDataByRegion = (txt) => {
+    txt = txt.toLowerCase();
+
+    if (txt !== "all") {
+      let arr = defData.filter(({ region }) => {
+        region = region.toLowerCase();
+        return region === txt;
+      });
+      setCountryData(() => arr);
+    } else {
+      setCountryData(defData);
+    }
+  };
+
   useEffect(() => {
-    getAllData();
+    if (localStorage.getItem("theme") === "dark") toggleTheme();
   }, []);
+
+  // ============= SHOW MODAL ===================
+  const [showModal, setShowModal] = useState(true);
 
   const value = {
     loading,
@@ -47,6 +86,13 @@ export function CountryProvider({ children }) {
 
     // Data
     countryData,
+    getAllData,
+    filterDataByInp,
+    filterDataByRegion,
+
+    // Modal
+    showModal,
+    setShowModal,
   };
   return (
     <CountryContext.Provider value={value}>{children}</CountryContext.Provider>

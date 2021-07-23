@@ -12,6 +12,7 @@
     font-size: 14px;
     cursor: pointer;
     height: 40px;
+    user-select: none;
 }
 .filter svg{
     width: 12px;
@@ -28,7 +29,9 @@
     flex-direction: column;
     align-items: flex-start;
     height: max-content;
+    z-index: 4;
 }
 .filter-dropdown p{
-    margin: 8px 0;
+    height: 32px;
+    width: 100%;
 }

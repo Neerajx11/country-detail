@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useCountry } from "../Contexts/CountryContext";
 import "../Css/Input.css";
 
 const Input = () => {
   const [inp, setInp] = useState("");
+  const { filterDataByInp } = useCountry();
+
+  useEffect(() => {
+    filterDataByInp(inp);
+  }, [inp]);
+
   return (
     <div className="inp">
       <div className="inp-left">

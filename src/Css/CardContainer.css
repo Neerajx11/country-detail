@@ -3,3 +3,7 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+.cardCtr-load{
+    color: var(--txtClr);
+    font-size: 16px;
+}

@@ -2,32 +2,27 @@ import React from "react";
 
 import "../Css/Card.css";
 
-const Card = () => {
-  let ctrData = {
-    name: "Afghanistan",
-    capital: "Kabul",
-    region: "Asia",
-    population: 27657145,
-    flag: "https://restcountries.eu/data/afg.svg",
-  };
+const Card = (props) => {
+  let { name, capital, region, population, flag } = props.data;
+
   return (
     <div className="card">
       <div className="card-img">
-        <img src={ctrData.flag} alt="" />
+        <img src={flag} alt="" />
       </div>
       <div className="card-body">
-        <p className="card-body__title">{ctrData.name}</p>
+        <p className="card-body__title">{name}</p>
         <p className="card-body__list">
           <span className="card-body__sub">Population : </span>
-          {ctrData.population.toLocaleString("en-US")}
+          {population.toLocaleString("en-US")}
         </p>
         <p className="card-body__list">
           <span className="card-body__sub">Region : </span>
-          {ctrData.region}
+          {region}
         </p>
         <p className="card-body__list">
           <span className="card-body__sub">Capital : </span>
-          {ctrData.capital}
+          {capital}
         </p>
       </div>
     </div>

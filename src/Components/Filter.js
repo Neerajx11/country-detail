@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import FilterTigger from "./FilterTigger";
+
 import "../Css/Filter.css";
 
 const Filter = () => {
   const [drpDown, setDrpDown] = useState(false);
+  const [fltrTitle, setFltrTitle] = useState("Filter by Region");
+  const REGIONS = ["All", "Africa", "America", "Asia", "Europe", "Oceania"];
 
   const toggleDrpDown = (e) => {
     setDrpDown(!drpDown);
@@ -16,7 +20,7 @@ const Filter = () => {
   return (
     <div className="filter">
       <div className="filter-main" onClick={toggleDrpDown}>
-        <span>Filter by Region</span>
+        <span>{fltrTitle}</span>
         <svg
           aria-hidden="true"
           focusable="false"
@@ -35,10 +39,14 @@ const Filter = () => {
       </div>
       {drpDown && (
         <div className="filter-dropdown">
-          <p>Hello</p>
-          <p>Hello</p>
-          <p>Hello</p>
-          <p>Hello</p>
+          {REGIONS.map((el, idx) => (
+            <FilterTigger
+              value={el}
+              toggle={setDrpDown}
+              setTitle={setFltrTitle}
+              key={idx}
+            />
+          ))}
         </div>
       )}
     </div>
