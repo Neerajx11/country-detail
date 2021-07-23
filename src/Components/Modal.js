@@ -6,7 +6,7 @@ import "../Css/Modal.css";
 import "../Css/Card.css";
 
 const Modal = () => {
-  let { modalData, setShowModal, defData } = useCountry();
+  let { modalData, setShowModal, setModalData, defData } = useCountry();
 
   const backHandler = () => {
     setShowModal(false);
@@ -30,7 +30,12 @@ const Modal = () => {
   );
 
   let finalBdr = br.map(({ name }) => name);
-  console.log(finalBdr);
+
+  let borderHandler = (e) => {
+    let innerName = e.target.innerText;
+    let newData = defData.filter(({ name }) => name === innerName);
+    setModalData(newData[0]);
+  };
 
   return (
     <div className="modal">
@@ -103,6 +108,7 @@ const Modal = () => {
                       <span
                         className="modal-nav__img card-body__sub-box"
                         key={idx}
+                        onClick={borderHandler}
                       >
                         {el}
                       </span>
