@@ -6,6 +6,7 @@ import CardContainer from "./CardContainer";
 import Filter from "./Filter";
 import Input from "./Input";
 import Modal from "./Modal";
+import ScrollToTop from "./ScrollToTop";
 
 const Base = () => {
   let { showModal } = useCountry();
@@ -25,6 +26,7 @@ const Base = () => {
       <div className="base-filter"></div>
       <CardContainer />
       {showModal && <Modal />}
+      <ScrollToTop />
     </div>
   );
 };

@@ -164,3 +164,8 @@
         width: 300px;
     }
 }
+@media (max-width:350px){
+    .modal-left img{
+        width: 280px;
+    }
+}
