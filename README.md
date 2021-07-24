@@ -2,8 +2,6 @@
 
 ## **API used**
 
----
-
 [REST Countries API](https://restcountries.eu/) for country details
 
 [Axios](https://www.npmjs.com/package/axios) for data fetching
@@ -12,21 +10,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## **Screenshots**
 
----
-
 ### **Desktop View**
 
-<img src="./src/assests/screenshot/WhiteLap.png" style="width:400px; display:block; margin:30px 0;"/>
-<img src="./src/assests/screenshot/DarkLap.png" style="width:400px;  display:block; margin:30px 0;"/>
+<img src="./src/assests/screenshot/WhiteLap.png" width="400px" style="margin:30px 0;"/>
+<img src="./src/assests/screenshot/DarkLap.png" width="400px" style="margin:30px 0;"/>
 
 ### **Mobile View**
 
-<img src="./src/assests/screenshot/WhitePhone.png" style="height:200px; margin:30px 0;"/>
-<img src="./src/assests/screenshot/DarkPhone.png" style="height:200px; margin:30px;"/>
+<img src="./src/assests/screenshot/WhitePhone.png" width="200px" style="margin:30px 0;"/>
+<img src="./src/assests/screenshot/DarkPhone.png" width="200px" style="margin:30px;"/>
 
 ## **Available Scripts**
-
----
 
 In the project directory, you can run:
 
