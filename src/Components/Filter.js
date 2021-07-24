@@ -9,7 +9,7 @@ const Filter = () => {
   const REGIONS = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
 
   const toggleDrpDown = (e) => {
-    setDrpDown(!drpDown);
+    setDrpDown((prev) => !prev);
     stpPgtn(e);
   };
 

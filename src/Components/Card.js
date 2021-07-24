@@ -9,7 +9,7 @@ const Card = (props) => {
 
   const clickHandler = () => {
     setModalData(props.data);
-    setShowModal(true);
+    setShowModal((prev) => !prev);
   };
 
   return (
