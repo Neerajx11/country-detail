@@ -1,6 +1,8 @@
 # Country Detail App
 
-## API used
+## **API used**
+
+---
 
 [REST Countries API](https://restcountries.eu/) for country details
 
@@ -8,7 +10,23 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## **Screenshots**
+
+---
+
+### **Desktop View**
+
+<img src="./src/assests/screenshot/WhiteLap.png" style="width:400px; display:block; margin:30px 0;"/>
+<img src="./src/assests/screenshot/DarkLap.png" style="width:400px;  display:block; margin:30px 0;"/>
+
+### **Mobile View**
+
+<img src="./src/assests/screenshot/WhitePhone.png" style="height:200px; margin:30px 0;"/>
+<img src="./src/assests/screenshot/DarkPhone.png" style="height:200px; margin:30px;"/>
+
+## **Available Scripts**
+
+---
 
 In the project directory, you can run:
 
