@@ -29,7 +29,7 @@ const Input = () => {
   useEffect(() => {
     let timer = setTimeout(() => {
       setSearchVal(inp);
-    }, 150);
+    }, 200);
     return () => {
       clearTimeout(timer);
     };
