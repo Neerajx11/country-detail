@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import FilterTigger from "./FilterTigger";
 
 import "../Css/Filter.css";
@@ -8,18 +8,30 @@ const Filter = () => {
   const [fltrTitle, setFltrTitle] = useState("Filter by Region");
   const REGIONS = ["All", "Africa", "Americas", "Asia", "Europe", "Oceania"];
 
-  const toggleDrpDown = (e) => {
-    setDrpDown((prev) => !prev);
-    stpPgtn(e);
-  };
-
-  const stpPgtn = (e) => {
+  const stpPrg = (e) => {
     e.stopPropagation();
   };
 
+  const closeDropDown = useCallback((e) => {
+    stpPrg(e);
+    setDrpDown(false);
+  }, []);
+
+  const openDropDown = (e) => {
+    stpPrg(e);
+    setDrpDown(true);
+  };
+
+  useEffect(() => {
+    window.addEventListener("click", closeDropDown);
+    return () => {
+      window.removeEventListener("click", closeDropDown);
+    };
+  }, [closeDropDown]);
+
   return (
     <div className="filter">
-      <div className="filter-main" onClick={toggleDrpDown}>
+      <div className="filter-main" onClick={openDropDown}>
         <span>{fltrTitle}</span>
         <svg
           aria-hidden="true"
@@ -38,7 +50,7 @@ const Filter = () => {
         </svg>
       </div>
       {drpDown && (
-        <div className="filter-dropdown">
+        <div className="filter-dropdown" onClick={closeDropDown}>
           {REGIONS.map((el, idx) => (
             <FilterTigger
               value={el}
