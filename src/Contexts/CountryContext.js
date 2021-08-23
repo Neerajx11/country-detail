@@ -7,7 +7,7 @@ export function useCountry() {
   return useContext(CountryContext);
 }
 
-export function CountryProvider({ children }) {
+export const CountryProvider = ({ children }) => {
   // ============ LOCAL STORAGE ===========
   const setThemeToLocal = (thm) => {
     setTheme(thm);
@@ -19,6 +19,13 @@ export function CountryProvider({ children }) {
 
   // ============= THEME ================
   const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    if (localStorage.getItem("theme") === "dark") {
+      setTheme("dark");
+    }
+    getAllData();
+  }, []);
 
   const toggleTheme = () =>
     theme === "light" ? setThemeToLocal("dark") : setThemeToLocal("light");
@@ -52,7 +59,7 @@ export function CountryProvider({ children }) {
         name = name.toLowerCase();
         return name.includes(txt);
       });
-      setCountryData(() => arr);
+      setCountryData(arr);
     } else {
       setCountryData(defData);
     }
@@ -72,16 +79,9 @@ export function CountryProvider({ children }) {
     }
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("theme") === "dark") toggleTheme();
-  }, []);
-
   // ============= SHOW MODAL ===================
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState("");
-
-  // ============= INPUT ================
-  const [inp, setInp] = useState("");
 
   const value = {
     loading,
@@ -91,6 +91,7 @@ export function CountryProvider({ children }) {
     // Data
     countryData,
     getAllData,
+    setCountryData,
     filterDataByInp,
     filterDataByRegion,
 
@@ -100,12 +101,8 @@ export function CountryProvider({ children }) {
     modalData,
     setModalData,
     defData,
-
-    // Input
-    inp,
-    setInp,
   };
   return (
     <CountryContext.Provider value={value}>{children}</CountryContext.Provider>
   );
-}
+};

@@ -1,15 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "./Card";
 
 import "../Css/CardContainer.css";
 import { useCountry } from "../Contexts/CountryContext";
 
 const CardContainer = () => {
-  const { countryData, getAllData } = useCountry();
-
-  useEffect(() => {
-    getAllData();
-  }, []);
+  const { countryData } = useCountry();
 
   return (
     <>

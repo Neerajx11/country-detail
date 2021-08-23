@@ -1,13 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useCountry } from "../Contexts/CountryContext";
 import "../Css/Input.css";
 
 const Input = () => {
-  const { inp, setInp, filterDataByInp } = useCountry();
+  const { setCountryData, defData } = useCountry();
+  const [inp, setInp] = useState("");
+  const [searchVal, setSearchVal] = useState("");
+
+  const inpHandler = (e) => {
+    setInp(e.target.value);
+  };
+
+  const filterDataByInp = useCallback(() => {
+    let txt = searchVal.toLowerCase();
+
+    if (txt) {
+      let arr = defData.filter(({ name }) => {
+        name = name.toLowerCase();
+        return name.includes(txt);
+      });
+      setCountryData(arr);
+    } else {
+      setCountryData(defData);
+    }
+  }, [defData, searchVal, setCountryData]);
+
+  //debouncing search value
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setSearchVal(inp);
+    }, 150);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [inp]);
 
   useEffect(() => {
-    filterDataByInp(inp);
-  }, [inp]);
+    filterDataByInp();
+  }, [filterDataByInp]);
 
   return (
     <div className="inp">
@@ -29,7 +59,7 @@ const Input = () => {
         type="text"
         value={inp}
         placeholder="Search for a country..."
-        onChange={(e) => setInp(e.target.value)}
+        onChange={inpHandler}
       />
     </div>
   );

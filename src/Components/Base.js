@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useCountry } from "../Contexts/CountryContext";
 
 import "../Css/Base.css";

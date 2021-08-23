@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useCountry } from "../Contexts/CountryContext";
 import Base from "./Base";
 import Loader from "./Loader";
@@ -7,15 +7,7 @@ import Navbar from "./Navbar";
 import "../Css/Home.css";
 
 const Home = () => {
-  let { loading, theme, toggleTheme } = useCountry();
-
-  const setThemeFromLocal = () => {
-    if (localStorage.getItem("theme") === "dark") toggleTheme();
-  };
-
-  useEffect(() => {
-    setThemeFromLocal();
-  }, []);
+  let { loading, theme } = useCountry();
 
   return (
     <div className="home" data-theme={theme}>
