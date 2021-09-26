@@ -2,7 +2,7 @@
 
 ## **API used**
 
-[REST Countries API](https://restcountries.eu/) for country details
+[REST Countries API](https://restcountries.com/) for country details
 
 [Axios](https://www.npmjs.com/package/axios) for data fetching
 

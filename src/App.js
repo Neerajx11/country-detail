@@ -1,4 +1,4 @@
-import Home from "./Components/Home";
+import Home from "./components/Home";
 import { CountryProvider } from "./Contexts/CountryContext";
 import "./Css/App.css";
 

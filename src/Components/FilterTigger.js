@@ -2,11 +2,10 @@ import React from "react";
 import { useCountry } from "../Contexts/CountryContext";
 
 const FilterTigger = (props) => {
-  const { filterDataByRegion, setInp } = useCountry();
+  const { filterDataByRegion } = useCountry();
 
   const clickHandler = (e) => {
     e.stopPropagation();
-    setInp("");
     filterDataByRegion(props.value);
     props.toggle(false);
     props.setTitle(props.value);

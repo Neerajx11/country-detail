@@ -22,11 +22,11 @@ const Modal = () => {
     topLevelDomain,
     currencies,
     languages,
-    flag,
+    flags,
   } = modalData;
 
   let br = defData.filter(({ alpha3Code }) =>
-    borders.some((v) => v.includes(alpha3Code))
+    borders?.some((v) => v.includes(alpha3Code))
   );
 
   let finalBdr = br.map(({ name }) => name);
@@ -56,7 +56,7 @@ const Modal = () => {
         <>
           <div className="modal-body">
             <div className="modal-left">
-              <img src={flag} alt="flag" />
+              <img src={flags[0]} alt="flag" />
             </div>
             <div className="modal-right">
               <div className="modal-title">{name}</div>
@@ -90,7 +90,7 @@ const Modal = () => {
                   </p>
                   <p className="card-body__list">
                     <span className="card-body__sub">Currencies : </span>
-                    {currencies[0].name}
+                    {currencies && currencies[0].name}
                   </p>
                   <p className="card-body__list">
                     <span className="card-body__sub">Languages : </span>

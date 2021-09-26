@@ -31,7 +31,7 @@ export const CountryProvider = ({ children }) => {
     theme === "light" ? setThemeToLocal("dark") : setThemeToLocal("light");
 
   // ============ GETTING DATA ==========
-  const BASE_URL = "https://restcountries.eu/rest/v2";
+  const BASE_URL = "https://restcountries.com/v2";
 
   //Stores default data
   const [defData, setDefData] = useState(null);
@@ -66,13 +66,8 @@ export const CountryProvider = ({ children }) => {
   };
 
   const filterDataByRegion = (txt) => {
-    txt = txt.toLowerCase();
-
-    if (txt !== "all") {
-      let arr = defData.filter(({ region }) => {
-        region = region.toLowerCase();
-        return region === txt;
-      });
+    if (txt !== "All") {
+      let arr = defData.filter(({ region }) => region.includes(txt));
       setCountryData(() => arr);
     } else {
       setCountryData(defData);
