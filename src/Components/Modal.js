@@ -22,7 +22,7 @@ const Modal = () => {
     topLevelDomain,
     currencies,
     languages,
-    flags,
+    flag,
   } = modalData;
 
   let br = defData.filter(({ alpha3Code }) =>
@@ -56,7 +56,7 @@ const Modal = () => {
         <>
           <div className="modal-body">
             <div className="modal-left">
-              <img src={flags[0]} alt="flag" />
+              <img src={flag} alt="flag" />
             </div>
             <div className="modal-right">
               <div className="modal-title">{name}</div>

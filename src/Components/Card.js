@@ -4,7 +4,7 @@ import { useCountry } from "../Contexts/CountryContext";
 import "../Css/Card.css";
 
 const Card = (props) => {
-  let { name, capital, region, population, flags } = props.data;
+  let { name, capital, region, population, flag } = props.data;
   let { setModalData, setShowModal } = useCountry();
 
   const clickHandler = () => {
@@ -15,7 +15,7 @@ const Card = (props) => {
   return (
     <div className="card" onClick={clickHandler}>
       <div className="card-img">
-        <img src={flags[0]} alt="" />
+        <img src={flag} alt="" />
       </div>
       <div className="card-body">
         <p className="card-body__title">{name}</p>
